@@ -1,6 +1,7 @@
 # Restful API server example
 
 * Go
+* Fiber
 * Postgresql
 * swagger
 * jwt
