@@ -1,0 +1,243 @@
+basePath: /
+definitions:
+  models.Email:
+    properties:
+      company_id:
+        type: string
+      company_name:
+        type: string
+      email_domain:
+        type: string
+      email_valid_id:
+        type: integer
+    type: object
+  models.Notice:
+    description: 공지사항 모델
+    properties:
+      created_at:
+        type: string
+      notice_contents:
+        example: notice_contents
+        type: string
+      notice_id:
+        type: integer
+      notice_title:
+        example: notice_title
+        type: string
+      profile_id:
+        example: profile_id
+        type: string
+      updated_at:
+        type: string
+    required:
+    - profile_id
+    type: object
+host: localhost:5001
+info:
+  contact:
+    email: fiber@swagger.io
+    name: API Support
+  description: This is a sample swagger for Fiber
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Fiber Example API
+  version: "1.0"
+paths:
+  /admin/email:
+    post:
+      consumes:
+      - application/json
+      description: Create a new email.
+      parameters:
+      - description: Email
+        in: body
+        name: email
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Email'
+      summary: create a new email
+      tags:
+      - Email
+    put:
+      consumes:
+      - application/json
+      description: Update email.
+      parameters:
+      - description: Email
+        in: body
+        name: email
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+      summary: update email
+      tags:
+      - Email
+  /admin/email/{company_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get email
+      parameters:
+      - description: Company ID
+        in: path
+        name: company_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Email'
+      summary: Get email
+      tags:
+      - Email
+  /admin/email/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete email by given ID.
+      parameters:
+      - description: Email ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ok
+          schema:
+            type: string
+      summary: delete email by given ID
+      tags:
+      - Email
+  /admin/emails:
+    get:
+      consumes:
+      - application/json
+      description: Get emails
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Email'
+      summary: Get emails
+      tags:
+      - Email
+  /admin/notice:
+    post:
+      consumes:
+      - application/json
+      description: Create a new notice.
+      parameters:
+      - description: Notice
+        in: body
+        name: notice
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Notice'
+      summary: create a new notice
+      tags:
+      - Notice
+    put:
+      consumes:
+      - application/json
+      description: Update notice.
+      parameters:
+      - description: Notice
+        in: body
+        name: notice
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+      summary: update notice
+      tags:
+      - Notice
+  /admin/notice/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete notice by given ID.
+      parameters:
+      - description: Notice ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ok
+          schema:
+            type: string
+      summary: delete notice by given ID
+      tags:
+      - Notice
+    get:
+      consumes:
+      - application/json
+      description: Get notice by ID
+      parameters:
+      - description: Notice ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Notice'
+      summary: Get a notice by ID
+  /admin/notices:
+    get:
+      consumes:
+      - application/json
+      description: Get notices
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Notice'
+      summary: Get notices
+swagger: "2.0"
